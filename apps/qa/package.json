@@ -1,0 +1,17 @@
+{
+  "name": "@fizzog/qa",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "cypress open --detached"
+  },
+  "devDependencies": {
+    "@fizzog/sx": "*",
+    "@fizzog/ui": "*",
+    "@types/react": "^18.0.25",
+    "cypress": "^11.2.0",
+    "typescript": "^4.9.3",
+    "tsconfig": "*"
+  }
+}

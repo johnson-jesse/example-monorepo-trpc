@@ -1,73 +1,39 @@
-# Turborepo starter
+# Example Monorepo
+This project brings together several layers of awesomeness starting with [TurboRepo](https://turbo.build). With that comes [ReactJS](https://reactjs.org) + [NextJS](https://nextjs.org). PlanetScale is used for persistence with the help of [Prisma](https://www.prisma.io) + [tRPC](https://trpc.io). For presentation and rapid prototypeing, [MaterialUI](https://mui.com) is leveraged. For testing, I have added the amazing [Cypress](https://www.cypress.io) for e2e and component confidence.
 
-This is an official Yarn v1 starter turborepo.
+Though I am using `yarn` as TurboRepo's backbone, one can easily choose NPM or PNPM. I'll probably move to pnpm once I finish evaluating and am comfortable with its api.
 
-## What's inside?
-
-This turborepo uses [Yarn](https://classic.yarnpkg.com/) as a package manager. It includes the following packages/apps:
-
-### Apps and Packages
-
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `ui`: a stub React component library shared by both `web` and `docs` applications
-- `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `tsconfig`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-yarn run build
+### Get Started
+```bash
+yarn install
 ```
 
-### Develop
+Create two `.env` files:
+1) `apps > web > .env
+2) `packages > db > .env
 
-To develop all apps and packages, run the following command:
+copy the `.env.example` files and replace the url strings using your own test prisma database connection values.
 
-```
-cd my-turborepo
-yarn run dev
-```
-
-### Remote Caching
-
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
+```bash
+yarn dev
 ```
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+### Tour
+This project is split into three applications and three packages with two configuration packages as follows
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your turborepo:
+apps:
+* `web` Our main web application
+* `docs` The documentation application. Currently disabled via scripts `xdiv`
+* `qa` The testing framework. Used for e2e and compoent testing. (unit testing can and should be done in limited scope where necessary)
 
-```
-npx turbo link
-```
+packages: 
+* `ui` A thin wrapper around mui
+* `sx` Composed, styled, and custom components using `ui`. The goal here is to keep `web` as pure as possible
+* `db` The database store. This project uses PlanetScale
+* `eslint-config-custom` and `tsconfig` come from standing up a new TurboRepo project
 
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Pipelines](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+### Gotcha
+* Environment variables are tricky in a monorepo. For now, the easiest thing is to add our `.env` files where necessary.
+* This project has multiple nextjs projects with all three apps using it. This project has listed the next.config.js file to the root which is picked up by all three.
+* The typescript config settings for baseUrl and path are not correctly extended to the `web` project. `typescript` bug? Turborepo issue? To fix, those two properties were moved into web's local config file.
+* tRPC continues to be a beast to configure. My first thought was to extract this complexity to a packages directory but that proved tricky. For now, leaving the configuration as recommended.

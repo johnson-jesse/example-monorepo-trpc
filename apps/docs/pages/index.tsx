@@ -1,4 +1,4 @@
-import { Button } from "ui";
+import { Button } from "@fizzog/ui";
 
 export default function Docs() {
   return (
