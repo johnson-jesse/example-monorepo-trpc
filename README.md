@@ -1,5 +1,5 @@
 # Example Monorepo
-This project brings together several layers of awesomeness starting with [TurboRepo](https://turbo.build). With that comes [ReactJS](https://reactjs.org) + [NextJS](https://nextjs.org). PlanetScale is used for persistence with the help of [Prisma](https://www.prisma.io) + [tRPC](https://trpc.io). For presentation and rapid prototypeing, [MaterialUI](https://mui.com) is leveraged. For testing, I have added the amazing [Cypress](https://www.cypress.io) for e2e and component confidence.
+This project brings together several layers of awesomeness starting with [TurboRepo](https://turbo.build). With that comes [ReactJS](https://reactjs.org) + [NextJS](https://nextjs.org). [PlanetScale](https://planetscale.com) is used for persistence with the help of [Prisma](https://www.prisma.io) + [tRPC](https://trpc.io). For presentation and rapid prototypeing, [MaterialUI](https://mui.com) is leveraged. For testing, I have added the amazing [Cypress](https://www.cypress.io) for e2e and component confidence.
 
 Though I am using `yarn` as TurboRepo's backbone, one can easily choose NPM or PNPM. I'll probably move to pnpm once I finish evaluating and am comfortable with its api.
 
