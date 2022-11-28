@@ -3,6 +3,8 @@ This project brings together several layers of awesomeness starting with [TurboR
 
 Though I am using `yarn` as TurboRepo's backbone, one can easily choose NPM or PNPM. I'll probably move to pnpm once I finish evaluating and am comfortable with its api.
 
+I'm very happy with the ease of use in TurboRepo. The speed boost with PlanetScale + tRPC. And the confidence through Cypress. I'll probably leverage this structure moving forward with my other personal project. The the exception that MUI will probably be left behind in favor of custom nobs.
+
 ### Get Started
 ```bash
 yarn install
