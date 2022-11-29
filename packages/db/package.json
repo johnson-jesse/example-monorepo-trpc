@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "prisma studio --browser none",
     "db:generate": "prisma generate",
-    "db:migrate": "prisma migrate dev"
+    "db:push": "prisma db push --skip-generate"
   },
   "devDependencies": {
     "prisma": "^4.6.1"

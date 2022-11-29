@@ -10,8 +10,8 @@
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
-    "generate": "turbo run generate",
-    "migrate": "turbo run migrate --skip-generate",
+    "generate": "turbo run db:generate",
+    "push": "turbo run db:push",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "reset": "rm -rf **/*/.next",
     "reset:hard": "yarn reset && rm -rf node_modules **/*/node_modules"
