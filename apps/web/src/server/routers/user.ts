@@ -8,7 +8,7 @@ import { z } from "zod";
 import { prisma } from "../prisma";
 
 /**
- * Default selector for Post.
+ * Default selector for User.
  * It's important to always explicitly say which fields you want to return in order to not leak extra information
  * @see https://github.com/prisma/prisma/issues/9353
  */
@@ -19,14 +19,8 @@ const defaultUserSelect = Prisma.validator<Prisma.UserSelect>()({
 });
 
 export const userRouter = router({
-  /** 
-   * This works just fine
-   */
   flatList: publicProcedure.query(() => prisma.user.findMany()),
   
-  /** 
-   * This breaks
-   */
   list: publicProcedure
     .input(
       z.object({
